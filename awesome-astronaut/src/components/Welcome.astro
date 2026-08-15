@@ -4,6 +4,8 @@ import img4218 from "../assets/images/IMG_4218.jpg";
 import img6883 from "../assets/images/IMG_6883.jpeg";
 import img7063 from "../assets/images/IMG_7063.jpeg";
 import logo from "../assets/logo-bg-removed.png";
+import marbleWhite from "../assets/stone-white-2.jpg";
+import marbleBlack from "../assets/marble-black.svg";
 
 const services = [
   "HVAC/R",
@@ -23,72 +25,166 @@ const services = [
 ];
 
 const projects = [
+  { src: img4127.src, alt: "Completed project work", caption: "Previous work" },
+  { src: img4218.src, alt: "Completed project work", caption: "Previous work" },
+  { src: img6883.src, alt: "Completed project work", caption: "Previous work" },
+  { src: img7063.src, alt: "Completed project work", caption: "Previous work" },
+];
+
+const contactItems = [
   {
-    src: img4127.src,
-    alt: "Completed project work",
-    caption: "Previous work",
+    label: "Phone",
+    value: "859-913-9972",
+    href: "tel:+18599139972",
+    icon: "phone",
   },
   {
-    src: img4218.src,
-    alt: "Completed project work",
-    caption: "Previous work",
+    label: "Email",
+    value: "majormaintenanceir@gmail.com",
+    href: "mailto:majormaintenanceir@gmail.com",
+    icon: "email",
   },
   {
-    src: img6883.src,
-    alt: "Completed project work",
-    caption: "Previous work",
+    label: "Service Area",
+    value: "Lexington, KY & Surrounding Areas",
+    href: null,
+    icon: "map",
   },
   {
-    src: img7063.src,
-    alt: "Completed project work",
-    caption: "Previous work",
+    label: "Owner",
+    value: "Jordan McGhee",
+    href: null,
+    icon: "user",
   },
 ];
 ---
 
-<div class="page">
-  <header class="header">
-    <a href="#hero" class="logo" aria-label="Jordan McGhee home">
-      <img src={logo.src} alt="Jordan McGhee" width="auto" height="150" />
-    </a>
+<div
+  class="page"
+  style={`--marble-white: url(${marbleWhite.src}); --marble-black: url(${marbleBlack.src});`}
+>
+  <div class="band band-light">
+    <header class="header">
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+      </button>
 
-    <button
-      class="menu-toggle"
-      type="button"
-      aria-label="Open menu"
-      aria-expanded="false"
-      aria-controls="site-nav"
-    >
-      <span class="menu-toggle-bar"></span>
-      <span class="menu-toggle-bar"></span>
-      <span class="menu-toggle-bar"></span>
-    </button>
+      <nav id="site-nav" class="nav">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-    <nav id="site-nav" class="nav">
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <main>
-    <section id="hero" class="hero">
-      <p class="eyebrow">Safe & Professional. High Quality & Efficient.</p>
-      <h1>Major Maintenance Installs & Repairs</h1>
-      <p class="subtitle">"It May Not Be Easy But It Is Possible."</p>
-      <a class="btn" href="#contact">Request a quote</a>
+    <section id="hero" class="hero wrap">
+      <div class="column">
+        <p class="eyebrow">
+          Safe &amp; Professional · High Quality &amp; Efficient
+        </p>
+        <h1>
+          <span class="text-gradient">Major Maintenance</span>
+          <span class="hero-subline">Installs &amp; Repairs</span>
+        </h1>
+        <p class="subtitle">“It may not be easy, but it is possible.”</p>
+        <a class="btn" href="#contact">Request a quote</a>
+      </div>
+      <div class="column">
+        <img
+          src={logo.src}
+          alt="Major Maintenance Installs & Repairs"
+          height={500}
+          width="auto"
+        />
+      </div>
     </section>
 
-    <section id="services" class="section">
-      <div class="section-head">
-        <p class="eyebrow">Skills & Services</p>
-        <h2>What I take care of</h2>
-      </div>
+    <ul class="contact-strip wrap">
+      {
+        contactItems.map((item) => (
+          <li class="contact-item">
+            <span class="icon-circle" aria-hidden="true">
+              {item.icon === "phone" && (
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M7.5 4.5h3l1.2 4.2-1.8 1.2a12 12 0 0 0 4.2 4.2l1.2-1.8 4.2 1.2v3a1.5 1.5 0 0 1-1.5 1.5A14.5 14.5 0 0 1 6 6a1.5 1.5 0 0 1 1.5-1.5Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              )}
+              {item.icon === "email" && (
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M4 7.5A1.5 1.5 0 0 1 5.5 6h13A1.5 1.5 0 0 1 20 7.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 16.5v-9Zm1.7.7 6.3 4.2 6.3-4.2"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              )}
+              {item.icon === "map" && (
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 21s6-5.2 6-10a6 6 0 1 0-12 0c0 4.8 6 10 6 10Zm0-7.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              )}
+              {item.icon === "user" && (
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4 0-7 2-7 4.5V20h14v-1.5C19 16 16 14 12 14Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              )}
+            </span>
+            <span class="contact-label">{item.label}</span>
+            {item.href ? (
+              <a href={item.href}>{item.value}</a>
+            ) : (
+              <span class="contact-value">{item.value}</span>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <div class="section-break" aria-hidden="true">
+    <div class="section-break-bar">
+      <span class="section-break-text">
+        <span>Skills</span>
+        <span class="text-gradient">&amp; Services</span>
+      </span>
+    </div>
+  </div>
+
+  <main class="band band-dark">
+    <section id="services" class="section wrap">
       <ul class="services">
         {
           services.map((service) => (
             <li class="service">
               <svg class="service-check" viewBox="0 0 20 20" aria-hidden="true">
+                <rect
+                  x="2.5"
+                  y="2.5"
+                  width="15"
+                  height="15"
+                  rx="1.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
                 <path
                   d="M6 10.2l2.6 2.6 5.4-5.6"
                   fill="none"
@@ -105,12 +201,16 @@ const projects = [
       </ul>
     </section>
 
-    <section id="work" class="section">
-      <div class="section-head">
-        <p class="eyebrow">Previous work</p>
-        <h2>A look at recent jobs</h2>
+    <div class="section-break section-break-dark" aria-hidden="true">
+      <div class="section-break-bar">
+        <span class="section-break-text">
+          <span class="text-light">Previous</span>
+          <span class="text-gradient">Work</span>
+        </span>
       </div>
+    </div>
 
+    <section id="work" class="section wrap">
       <div class="carousel" data-carousel>
         <button
           class="carousel-btn prev"
@@ -161,12 +261,16 @@ const projects = [
       </div>
     </section>
 
-    <section id="contact" class="section">
-      <div class="section-head">
-        <p class="eyebrow">Contact</p>
-        <h2>Tell me about the job</h2>
+    <div class="section-break section-break-dark" aria-hidden="true">
+      <div class="section-break-bar">
+        <span class="section-break-text">
+          <span class="text-light">Get In</span>
+          <span class="text-gradient">Touch</span>
+        </span>
       </div>
+    </div>
 
+    <section id="contact" class="section wrap">
       <form class="form" data-contact-form>
         <label>
           <span>Name</span>
@@ -188,19 +292,30 @@ const projects = [
         <p class="form-status" hidden>Thanks — I’ll get back to you shortly.</p>
       </form>
     </section>
-  </main>
 
-  <footer class="footer">
-    <div class="footer-brand">
-      <p class="footer-name">Jordan McGhee</p>
-      <p>Maintenance &amp; Installation</p>
-    </div>
-    <div class="footer-contact">
-      <a href="tel:+15555550123">(555) 555-0123</a>
-      <a href="mailto:hello@jordanmcghee.com">hello@jordanmcghee.com</a>
-      <p>Serving the local area, by appointment.</p>
-    </div>
-  </footer>
+    <footer class="footer wrap">
+      <a class="cta" href="tel:+18599139972">
+        <span class="icon-circle cta-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M7.5 4.5h3l1.2 4.2-1.8 1.2a12 12 0 0 0 4.2 4.2l1.2-1.8 4.2 1.2v3a1.5 1.5 0 0 1-1.5 1.5A14.5 14.5 0 0 1 6 6a1.5 1.5 0 0 1 1.5-1.5Z"
+              fill="currentColor"></path>
+          </svg>
+        </span>
+        <span class="cta-copy">
+          <span class="cta-top">Call Today</span>
+          <span class="cta-bottom text-gradient">For Reliable Service</span>
+        </span>
+      </a>
+      <div class="footer-contact">
+        <a href="tel:+18599139972">859-913-9972</a>
+        <a href="mailto:majormaintenanceir@gmail.com"
+          >majormaintenanceir@gmail.com</a
+        >
+        <p>Lexington, KY &amp; Surrounding Areas</p>
+      </div>
+    </footer>
+  </main>
 </div>
 
 <script>
@@ -231,6 +346,13 @@ const projects = [
     if (event.key === "Escape") setMenu(false);
   });
 
+  function updateHeaderScroll() {
+    header?.classList.toggle("is-scrolled", window.scrollY > 20);
+  }
+
+  updateHeaderScroll();
+  window.addEventListener("scroll", updateHeaderScroll, { passive: true });
+
   const carousel = document.querySelector("[data-carousel]");
   const track = carousel?.querySelector(".carousel-track");
   const prev = carousel?.querySelector(".carousel-btn.prev");
@@ -257,30 +379,41 @@ const projects = [
 
 <style>
   :root {
-    --color-primary: #e40809;
-  }
-
-  h1 {
-    color: var(--color-primary);
-    font-style: italic;
-    font-weight: 800;
+    --red-light: #f00a0b;
+    --red: #ce0613;
+    --red-dark: #a01420;
+    --metal-light: #f4f4f4;
+    --metal-mid: #b8b8b8;
+    --metal-dark: #6e6e6e;
+    --ink: #111;
+    --paper: #f3f1ed;
+    --dark-dark: #1a1a1a;
+    --medium-dark: #2e2e2e;
+    --light-dark: #474747;
+    --dark-gradient: linear-gradient(
+      90deg,
+      var(--dark-dark) 0%,
+      var(--medium-dark) 50%,
+      var(--light-dark) 100%
+    );
+    --red-gradient: linear-gradient(
+      180deg,
+      var(--red-light) 0%,
+      var(--red-dark) 100%
+    );
   }
 
   :global(html) {
     scroll-behavior: smooth;
-    scroll-padding-top: 4.5rem;
+    scroll-padding-top: 5.5rem;
   }
 
   :global(body) {
     margin: 0;
-    background: #f7f6f3;
-    color: #1c1c1a;
-    font-family:
-      "Segoe UI",
-      system-ui,
-      -apple-system,
-      sans-serif;
-    line-height: 1.5;
+    background: #0a0a0a;
+    color: var(--ink);
+    font-family: Oswald, "Arial Narrow", sans-serif;
+    line-height: 1.45;
   }
 
   :global(body.menu-open) {
@@ -291,36 +424,77 @@ const projects = [
     min-height: 100%;
   }
 
+  .wrap {
+    width: min(1080px, calc(100% - 2.5rem));
+    margin-inline: auto;
+  }
+
+  .band-light {
+    background-color: var(--paper);
+    background-image: var(--marble-white);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .band-dark {
+    background-color: #0a0a0a;
+    background-image: var(--marble-black);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: #f5f5f5;
+  }
+
+  .text-gradient {
+    background: var(--red-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-light {
+    color: #f5f5f5;
+  }
+
   .header {
     position: sticky;
     top: 0;
     z-index: 20;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 1rem;
-    padding: 1rem 2rem;
-    background: rgba(247, 246, 243, 0.92);
+    padding: 3rem 1.5rem;
+    background: transparent;
+    backdrop-filter: blur(2px);
+    border-bottom: 1px solid transparent;
+    transition:
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      backdrop-filter 0.25s ease,
+      padding 0.25s ease;
+  }
+
+  .header.is-scrolled {
+    background: #fff;
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid #e6e4de;
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+    padding: 2rem 1.5rem;
   }
 
   .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-    color: inherit;
-    text-decoration: none;
-    font-weight: 600;
-    letter-spacing: -0.02em;
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
   }
 
-  .logo-mark {
-    width: 1.4rem;
-    height: 1.4rem;
-    flex-shrink: 0;
+  .logo img {
+    display: block;
+    height: clamp(3.5rem, 10vw, 5.5rem);
+    width: auto;
   }
 
   .menu-toggle {
@@ -333,13 +507,14 @@ const projects = [
     border: 0;
     background: transparent;
     cursor: pointer;
+    color: var(--ink);
   }
 
   .menu-toggle-bar {
     display: block;
-    width: 2rem;
-    height: 0.5rem;
-    margin: 5px auto;
+    width: 1.6rem;
+    height: 0.18rem;
+    margin: 0.28rem auto;
     background: currentColor;
     transition:
       transform 0.2s ease,
@@ -347,7 +522,7 @@ const projects = [
   }
 
   .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(1) {
-    transform: translateY(12px) rotate(45deg);
+    transform: translateY(0.46rem) rotate(45deg);
   }
 
   .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(2) {
@@ -355,7 +530,7 @@ const projects = [
   }
 
   .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(3) {
-    transform: translateY(-12px) rotate(-45deg);
+    transform: translateY(-0.46rem) rotate(-45deg);
   }
 
   .nav {
@@ -365,124 +540,242 @@ const projects = [
   }
 
   .nav a {
-    color: #4a4a46;
+    color: #2a2a2a;
     text-decoration: none;
     font-size: 1.25rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
   .nav a:hover {
-    color: #1c1c1a;
-  }
-
-  .hero,
-  .section,
-  .footer {
-    width: min(1080px, calc(100% - 2.5rem));
-    margin-inline: auto;
+    color: var(--red);
   }
 
   .hero {
-    padding: 5.5rem 0 4.5rem;
-    max-width: 40rem;
+    padding: 5.5rem 0 3.5rem;
     margin-left: max(1.25rem, calc((100% - 1080px) / 2));
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
   }
 
   .eyebrow {
-    margin: 0 0 0.75rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
+    margin: 0 0 0.85rem;
+    font-size: 1rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #6d6c66;
-  }
-
-  h1,
-  h2,
-  h3 {
-    margin: 0;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.15;
+    color: #5a5854;
   }
 
   h1 {
-    font-size: clamp(2.15rem, 5vw, 3.4rem);
-  }
-
-  h2 {
-    font-size: clamp(1.6rem, 3vw, 2.1rem);
-  }
-
-  .subtitle,
-  .footer p {
     margin: 0;
-    color: #5c5b56;
+    font-size: clamp(2.4rem, 7vw, 4rem);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 0.98;
+    text-transform: uppercase;
+  }
+
+  .hero-subline {
+    display: block;
+    margin-top: 0.15em;
+    color: #111;
+    -webkit-text-fill-color: #111;
   }
 
   .subtitle {
-    margin: 1rem 0 1.75rem;
-    font-size: 1.1rem;
-    max-width: 34rem;
+    margin: 1.1rem 0 1.75rem;
+    max-width: 28rem;
+    font-family: "Libre Baskerville", Georgia, serif;
+    font-size: clamp(1.05rem, 2.4vw, 1.25rem);
+    font-style: italic;
+    color: #333;
   }
 
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.8rem 1.2rem;
+    padding: 0.85rem 1.35rem;
     border: 0;
     border-radius: 2px;
-    background: #1c1c1a;
-    color: #f7f6f3;
+    background: linear-gradient(180deg, var(--red) 0%, var(--red-dark) 100%);
+    color: #fff;
     font: inherit;
     font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
   }
 
   .btn:hover {
-    background: #33332f;
+    filter: brightness(1.08);
+  }
+
+  .contact-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    padding: 0 0 2.75rem;
+    list-style: none;
+    margin: 0 auto;
+  }
+
+  .contact-item {
+    display: grid;
+    justify-items: center;
+    gap: 0.35rem;
+    text-align: center;
+  }
+
+  .icon-circle {
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border: 2px solid var(--red);
+    border-radius: 50%;
+    color: var(--red);
+    background: rgba(255, 255, 255, 0.55);
+  }
+
+  .icon-circle svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .contact-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+
+  .contact-item a,
+  .contact-value {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    word-break: break-word;
+  }
+
+  .contact-item a:hover {
+    color: var(--red);
+  }
+
+  .section-break {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    padding: 0 1rem;
+    margin-top: -1px;
+    background: linear-gradient(180deg, transparent 42%, #0a0a0a 42%);
+  }
+
+  .section-break-dark {
+    background: transparent;
+    padding: 1.5rem 1rem 0.5rem;
+  }
+
+  .section-break-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(720px, 100%);
+    min-height: 3rem;
+    padding: 0.55rem 2.5rem;
+    background: linear-gradient(
+      180deg,
+      #f7f7f7 0%,
+      #d0d0d0 28%,
+      #9a9a9a 52%,
+      #cfcfcf 78%,
+      #ececec 100%
+    );
+    clip-path: polygon(
+      1.5rem 0,
+      calc(100% - 1.5rem) 0,
+      100% 50%,
+      calc(100% - 1.5rem) 100%,
+      1.5rem 100%,
+      0 50%
+    );
+    box-shadow:
+      0 2px 0 rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  }
+
+  .section-break-bar::before,
+  .section-break-bar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1.35rem;
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--red) 0 6px,
+      #fff 6px 12px
+    );
+  }
+
+  .section-break-bar::before {
+    left: 0.85rem;
+    clip-path: polygon(40% 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .section-break-bar::after {
+    right: 0.85rem;
+    clip-path: polygon(0 0, 60% 0, 100% 100%, 0 100%);
+  }
+
+  .section-break-text {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    gap: 0.4rem;
+    font-size: clamp(1.1rem, 3vw, 1.45rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #111;
   }
 
   .section {
-    padding: 4rem 0;
-    border-top: 1px solid #e6e4de;
-  }
-
-  .section-head {
-    margin-bottom: 2rem;
+    padding: 2.5rem 0 3.25rem;
   }
 
   .services {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.15rem 2rem;
     margin: 0;
     padding: 0;
     list-style: none;
-    border-top: 1px solid #e6e4de;
   }
 
   .service {
     display: flex;
     align-items: flex-start;
-    gap: 0.65rem;
-    padding: 0.95rem 1rem 0.95rem 0;
-    border-bottom: 1px solid #e6e4de;
-    font-size: 1rem;
-    letter-spacing: -0.02em;
+    gap: 0.7rem;
+    padding: 0.7rem 0;
+    font-size: 1.02rem;
+    letter-spacing: 0.02em;
+    color: #f2f2f2;
   }
 
   .service-check {
     width: 1.5rem;
     height: 1.5rem;
     flex-shrink: 0;
-    margin-top: 0.15rem;
-    color: #1c1c1a;
-  }
-
-  .service:nth-child(even) {
-    padding-left: 1rem;
-    padding-right: 0;
+    margin-top: 0.12rem;
+    color: var(--red);
   }
 
   .carousel {
@@ -516,14 +809,16 @@ const projects = [
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
-    border-radius: 2px;
-    background: #e6e4de;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #222;
   }
 
   .carousel-slide figcaption {
     margin-top: 0.65rem;
     font-size: 0.9rem;
-    color: #5c5b56;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #bdbdbd;
   }
 
   .carousel-btn {
@@ -534,10 +829,10 @@ const projects = [
     width: 2.4rem;
     height: 2.4rem;
     padding: 0;
-    border: 1px solid #d8d6d0;
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 999px;
-    background: #f7f6f3;
-    color: inherit;
+    background: rgba(10, 10, 10, 0.85);
+    color: #fff;
     cursor: pointer;
   }
 
@@ -564,8 +859,10 @@ const projects = [
   .form label {
     display: grid;
     gap: 0.4rem;
-    font-size: 0.9rem;
-    color: #4a4a46;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #cfcfcf;
   }
 
   .form .full,
@@ -583,58 +880,101 @@ const projects = [
   textarea {
     width: 100%;
     box-sizing: border-box;
-    padding: 0.7rem 0.8rem;
-    border: 1px solid #d8d6d0;
+    padding: 0.75rem 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 2px;
-    background: #fff;
-    color: inherit;
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
     font: inherit;
+    letter-spacing: 0.02em;
+    text-transform: none;
   }
 
   input:focus,
   textarea:focus {
-    outline: 2px solid #1c1c1a;
+    outline: 2px solid var(--red);
     outline-offset: 1px;
   }
 
   .form-status {
     margin: 0;
-    color: #3d5a45;
+    color: #9dd6aa;
   }
 
   .footer {
     display: flex;
     justify-content: space-between;
-    gap: 2rem;
-    padding: 2.5rem 0 3rem;
-    border-top: 1px solid #e6e4de;
-    font-size: 0.95rem;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 0 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    margin-top: 0.5rem;
   }
 
-  .footer-name {
-    margin: 0 0 0.2rem;
-    font-weight: 600;
-    color: #1c1c1a;
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .cta-icon {
+    width: 3.1rem;
+    height: 3.1rem;
+    background: linear-gradient(180deg, var(--red) 0%, var(--red-dark) 100%);
+    border-color: #fff;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .cta-copy {
+    display: grid;
+    line-height: 1.05;
+  }
+
+  .cta-top {
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  .cta-bottom {
+    font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 
   .footer-contact {
     display: grid;
-    gap: 0.3rem;
+    gap: 0.25rem;
     text-align: right;
+    font-size: 0.95rem;
   }
 
-  .footer-contact a {
-    color: inherit;
+  .footer-contact a,
+  .footer-contact p {
+    margin: 0;
+    color: #d7d7d7;
     text-decoration: none;
   }
 
   .footer-contact a:hover {
-    text-decoration: underline;
+    color: var(--red);
+  }
+
+  @media (max-width: 900px) {
+    .contact-strip {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   @media (max-width: 720px) {
     .header {
-      padding: 0.7rem 1rem;
+      padding: 0.55rem 1rem;
     }
 
     .menu-toggle {
@@ -643,54 +983,49 @@ const projects = [
 
     .nav {
       position: fixed;
-      inset: 0;
+      inset: 0 auto auto 0;
       z-index: 25;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
       align-items: flex-start;
-      gap: 1.5rem;
-      padding: 5rem 1.5rem 2rem;
-      background-color: #f7f6f3;
+      gap: 1.25rem;
+      width: 100%;
+      padding: 5rem 1.5rem 1.5rem;
+      background-color: #f3f1ed;
       transform: translateX(100%);
       transition: transform 0.25s ease;
+      height: fit-content;
     }
 
     .nav.is-open {
       transform: translateX(0);
-      height: fit-content;
     }
 
     .nav a {
-      font-size: 1.5rem;
-      color: #1c1c1a;
+      font-size: 1.35rem;
+      color: #111;
     }
 
     .hero,
-    .section,
-    .footer {
+    .wrap {
       width: min(1080px, calc(100% - 2rem));
+      grid-template-columns: 1fr;
     }
 
     .hero {
-      padding: 3.5rem 0 3rem;
+      padding: 2.5rem 0 2rem;
       margin-left: auto;
       margin-right: auto;
       max-width: none;
     }
 
-    .section {
-      padding: 3rem 0;
+    .contact-strip {
+      grid-template-columns: 1fr;
+      padding-bottom: 2rem;
     }
 
     .services {
       grid-template-columns: 1fr;
-    }
-
-    .service,
-    .service:nth-child(even) {
-      padding-left: 0;
-      padding-right: 0;
     }
 
     .form {
@@ -701,10 +1036,17 @@ const projects = [
       display: none;
     }
 
-    .footer,
-    .footer-contact {
+    .footer {
       flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-contact {
       text-align: left;
+    }
+
+    .band-dark {
+      background-attachment: scroll;
     }
   }
 </style>
