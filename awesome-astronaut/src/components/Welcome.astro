@@ -160,15 +160,10 @@ const contactItems = [
   </div>
 
   <div class="section-break" aria-hidden="true">
-    <div class="section-break-bar">
-      <span class="section-break-text">
-        <span>Skills</span>
-        <span class="text-gradient">&amp; Services</span>
-      </span>
-    </div>
+    <span class="section-break-text"> Skills &amp; Services </span>
   </div>
 
-  <main class="band band-dark">
+  <main class="band">
     <section id="services" class="section wrap">
       <ul class="services">
         {
@@ -202,12 +197,10 @@ const contactItems = [
     </section>
 
     <div class="section-break section-break-dark" aria-hidden="true">
-      <div class="section-break-bar">
-        <span class="section-break-text">
-          <span class="text-light">Previous</span>
-          <span class="text-gradient">Work</span>
-        </span>
-      </div>
+      <span class="section-break-text">
+        <span class="text-light">Previous</span>
+        <span class="text-gradient">Work</span>
+      </span>
     </div>
 
     <section id="work" class="section wrap">
@@ -262,12 +255,10 @@ const contactItems = [
     </section>
 
     <div class="section-break section-break-dark" aria-hidden="true">
-      <div class="section-break-bar">
-        <span class="section-break-text">
-          <span class="text-light">Get In</span>
-          <span class="text-gradient">Touch</span>
-        </span>
-      </div>
+      <span class="section-break-text">
+        <span class="text-light">Get In</span>
+        <span class="text-gradient">Touch</span>
+      </span>
     </div>
 
     <section id="contact" class="section wrap">
@@ -346,8 +337,19 @@ const contactItems = [
     if (event.key === "Escape") setMenu(false);
   });
 
+  let headerScrolled = false;
+
   function updateHeaderScroll() {
-    header?.classList.toggle("is-scrolled", window.scrollY > 20);
+    const y = window.scrollY;
+    // Hysteresis: different enter/exit thresholds so padding/layout
+    // changes can't flip the class back and forth near the top.
+    if (!headerScrolled && y > 48) {
+      headerScrolled = true;
+      header?.classList.add("is-scrolled");
+    } else if (headerScrolled && y < 12) {
+      headerScrolled = false;
+      header?.classList.remove("is-scrolled");
+    }
   }
 
   updateHeaderScroll();
@@ -387,19 +389,33 @@ const contactItems = [
     --metal-dark: #6e6e6e;
     --ink: #111;
     --paper: #f3f1ed;
-    --dark-dark: #1a1a1a;
-    --medium-dark: #2e2e2e;
+    --dark-dark: #0a0a0a;
+    --medium-dark: #222222;
     --light-dark: #474747;
     --dark-gradient: linear-gradient(
       90deg,
       var(--dark-dark) 0%,
       var(--medium-dark) 50%,
-      var(--light-dark) 100%
+      var(--dark-dark) 100%
     );
     --red-gradient: linear-gradient(
       180deg,
       var(--red-light) 0%,
       var(--red-dark) 100%
+    );
+    --red-gradient-horizontal: linear-gradient(
+      90deg,
+      var(--red-dark) 0%,
+      var(--red) 50%,
+      var(--red-dark) 100%
+    );
+    --stainless-steel: linear-gradient(
+      90deg,
+      #787878 0%,
+      #b5b5b5 25%,
+      #e3e3e3 50%,
+      #b5b5b5 75%,
+      #787878 100%
     );
   }
 
@@ -410,7 +426,7 @@ const contactItems = [
 
   :global(body) {
     margin: 0;
-    background: #0a0a0a;
+    background: var(--dark-gradient);
     color: var(--ink);
     font-family: Oswald, "Arial Narrow", sans-serif;
     line-height: 1.45;
@@ -436,15 +452,6 @@ const contactItems = [
     background-position: center;
   }
 
-  .band-dark {
-    background-color: #0a0a0a;
-    background-image: var(--marble-black);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    color: #f5f5f5;
-  }
-
   .text-gradient {
     background: var(--red-gradient);
     -webkit-background-clip: text;
@@ -465,22 +472,20 @@ const contactItems = [
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    padding: 3rem 1.5rem;
+    padding: 2rem 1.5rem;
     background: transparent;
     backdrop-filter: blur(2px);
     border-bottom: 1px solid transparent;
     transition:
       background-color 0.25s ease,
       border-color 0.25s ease,
-      backdrop-filter 0.25s ease,
-      padding 0.25s ease;
+      backdrop-filter 0.25s ease;
   }
 
   .header.is-scrolled {
     background: #fff;
     backdrop-filter: blur(12px);
     border-bottom-color: rgba(0, 0, 0, 0.08);
-    padding: 2rem 1.5rem;
   }
 
   .logo {
@@ -672,67 +677,17 @@ const contactItems = [
     z-index: 2;
     display: grid;
     place-items: center;
-    padding: 0 1rem;
+    padding: 2rem 1rem;
     margin-top: -1px;
-    background: linear-gradient(180deg, transparent 42%, #0a0a0a 42%);
+    background: var(--red-gradient-horizontal);
+    border-bottom: 16px solid transparent;
+    border-top: 16px solid transparent;
+    border-image: var(--stainless-steel) 1;
   }
 
   .section-break-dark {
     background: transparent;
-    padding: 1.5rem 1rem 0.5rem;
-  }
-
-  .section-break-bar {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: min(720px, 100%);
-    min-height: 3rem;
-    padding: 0.55rem 2.5rem;
-    background: linear-gradient(
-      180deg,
-      #f7f7f7 0%,
-      #d0d0d0 28%,
-      #9a9a9a 52%,
-      #cfcfcf 78%,
-      #ececec 100%
-    );
-    clip-path: polygon(
-      1.5rem 0,
-      calc(100% - 1.5rem) 0,
-      100% 50%,
-      calc(100% - 1.5rem) 100%,
-      1.5rem 100%,
-      0 50%
-    );
-    box-shadow:
-      0 2px 0 rgba(0, 0, 0, 0.35),
-      inset 0 1px 0 rgba(255, 255, 255, 0.75);
-  }
-
-  .section-break-bar::before,
-  .section-break-bar::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 1.35rem;
-    background: repeating-linear-gradient(
-      -45deg,
-      var(--red) 0 6px,
-      #fff 6px 12px
-    );
-  }
-
-  .section-break-bar::before {
-    left: 0.85rem;
-    clip-path: polygon(40% 0, 100% 0, 100% 100%, 0 100%);
-  }
-
-  .section-break-bar::after {
-    right: 0.85rem;
-    clip-path: polygon(0 0, 60% 0, 100% 100%, 0 100%);
+    padding: 2rem 1rem;
   }
 
   .section-break-text {
@@ -740,11 +695,11 @@ const contactItems = [
     z-index: 1;
     display: inline-flex;
     gap: 0.4rem;
-    font-size: clamp(1.1rem, 3vw, 1.45rem);
+    font-size: clamp(1.5rem, 3vw, 1.75rem);
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #111;
+    color: #f5f5f5;
   }
 
   .section {
@@ -762,10 +717,10 @@ const contactItems = [
 
   .service {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.7rem;
     padding: 0.7rem 0;
-    font-size: 1.02rem;
+    font-size: 1.5rem;
     letter-spacing: 0.02em;
     color: #f2f2f2;
   }

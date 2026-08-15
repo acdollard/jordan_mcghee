@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Major Maintenance M Favicon</title>
+  <desc>Stylized red M with white and black outlines</desc>
+
+  <!-- Outer black silhouette -->
+  <path
+    d="M58 58 H183 L256 273 L329 58 H454 V454 H348 V258 L292 408 H220 L164 258 V454 H58 Z"
+    fill="#111111"
+    stroke="#050505"
+    stroke-width="10"
+    stroke-linejoin="round"/>
+
+  <!-- White inset outline -->
+  <path
+    d="M72 72 H174 L256 311 L338 72 H440 V440 H362 V205 L303 392 H209 L150 205 V440 H72 Z"
+    fill="#ffffff"
+    stroke="#ffffff"
+    stroke-width="6"
+    stroke-linejoin="round"/>
+
+  <!-- Red face -->
+  <path
+    d="M84 84 H166 L256 330 L346 84 H428 V428 H374 V170 L310 380 H202 L138 170 V428 H84 Z"
+    fill="#ed171c"
+    stroke="#111111"
+    stroke-width="10"
+    stroke-linejoin="round"/>
+
+  <!-- Subtle red highlight -->
+  <path
+    d="M98 98 H156 L256 362 L356 98 H414"
+    fill="none"
+    stroke="#ff3a3f"
+    stroke-width="5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.7"/>
+</svg>
