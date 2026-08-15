@@ -99,10 +99,11 @@ const contactItems = [
       </div>
       <div class="column">
         <img
+          class="hero-logo"
           src={logo.src}
           alt="Major Maintenance Installs & Repairs"
-          height={450}
-          width="auto"
+          width="450"
+          height="450"
         />
       </div>
     </section>
@@ -578,6 +579,14 @@ const contactItems = [
     align-items: center;
   }
 
+  .hero-logo {
+    display: block;
+    width: min(100%, 450px);
+    max-width: 100%;
+    height: auto;
+    margin-inline: auto;
+  }
+
   .eyebrow {
     margin: 0 0 0.85rem;
     font-size: 1rem;
@@ -665,7 +674,7 @@ const contactItems = [
   }
 
   .contact-label {
-    font-size: 0.78rem;
+    font-size: 1rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--red);
@@ -675,7 +684,7 @@ const contactItems = [
   .contact-value {
     color: #1a1a1a;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.3;
     word-break: break-word;
   }
@@ -1042,6 +1051,10 @@ const contactItems = [
       margin-left: auto;
       margin-right: auto;
       max-width: none;
+    }
+
+    .hero-logo {
+      width: min(100%, 280px);
     }
 
     .contact-strip {
