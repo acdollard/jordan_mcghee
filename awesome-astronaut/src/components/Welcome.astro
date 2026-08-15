@@ -1,0 +1,707 @@
+---
+import img4127 from "../assets/images/IMG_4127.jpg";
+import img4218 from "../assets/images/IMG_4218.jpg";
+import img6883 from "../assets/images/IMG_6883.jpeg";
+import img7063 from "../assets/images/IMG_7063.jpeg";
+import logo from "../assets/logo-bg-removed.png";
+
+const services = [
+  "HVAC/R",
+  "Lite Electrical",
+  "Lite Plumbing",
+  "Appliance Installation/Repair",
+  "Kitchen/Bathroom Renovation",
+  "Drywall Repair/Install",
+  "Carpentry",
+  "Cabinetry",
+  "Light Fixtures/Ceiling Fan Installation",
+  "Home Entertainment Sound System Install",
+  "TV Mounting",
+  "Electrical Fireplace Mounting",
+  "Furniture Assembly",
+  "Picture/Drape Hanging",
+];
+
+const projects = [
+  {
+    src: img4127.src,
+    alt: "Completed project work",
+    caption: "Previous work",
+  },
+  {
+    src: img4218.src,
+    alt: "Completed project work",
+    caption: "Previous work",
+  },
+  {
+    src: img6883.src,
+    alt: "Completed project work",
+    caption: "Previous work",
+  },
+  {
+    src: img7063.src,
+    alt: "Completed project work",
+    caption: "Previous work",
+  },
+];
+---
+
+<div class="page">
+  <header class="header">
+    <a href="#hero" class="logo" aria-label="Jordan McGhee home">
+      <img src={logo.src} alt="Jordan McGhee" width="auto" height="150" />
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="site-nav"
+    >
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+      <span class="menu-toggle-bar"></span>
+    </button>
+
+    <nav id="site-nav" class="nav">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <p class="eyebrow">Safe & Professional. High Quality & Efficient.</p>
+      <h1>Major Maintenance Installs & Repairs</h1>
+      <p class="subtitle">"It May Not Be Easy But It Is Possible."</p>
+      <a class="btn" href="#contact">Request a quote</a>
+    </section>
+
+    <section id="services" class="section">
+      <div class="section-head">
+        <p class="eyebrow">Skills & Services</p>
+        <h2>What I take care of</h2>
+      </div>
+      <ul class="services">
+        {
+          services.map((service) => (
+            <li class="service">
+              <svg class="service-check" viewBox="0 0 20 20" aria-hidden="true">
+                <path
+                  d="M6 10.2l2.6 2.6 5.4-5.6"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span>{service}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section id="work" class="section">
+      <div class="section-head">
+        <p class="eyebrow">Previous work</p>
+        <h2>A look at recent jobs</h2>
+      </div>
+
+      <div class="carousel" data-carousel>
+        <button
+          class="carousel-btn prev"
+          type="button"
+          aria-label="Previous project"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M15 6l-6 6 6 6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </button>
+
+        <div
+          class="carousel-track"
+          tabindex="0"
+          aria-label="Previous work gallery"
+        >
+          {
+            projects.map((project) => (
+              <figure class="carousel-slide">
+                <img src={project.src} alt={project.alt} loading="lazy" />
+                <figcaption>{project.caption}</figcaption>
+              </figure>
+            ))
+          }
+        </div>
+
+        <button
+          class="carousel-btn next"
+          type="button"
+          aria-label="Next project"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M9 6l6 6-6 6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="section-head">
+        <p class="eyebrow">Contact</p>
+        <h2>Tell me about the job</h2>
+      </div>
+
+      <form class="form" data-contact-form>
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" autocomplete="name" required />
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
+        <label>
+          <span>Phone</span>
+          <input type="tel" name="phone" autocomplete="tel" />
+        </label>
+        <label class="full">
+          <span>Message</span>
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button class="btn" type="submit">Send message</button>
+        <p class="form-status" hidden>Thanks — I’ll get back to you shortly.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand">
+      <p class="footer-name">Jordan McGhee</p>
+      <p>Maintenance &amp; Installation</p>
+    </div>
+    <div class="footer-contact">
+      <a href="tel:+15555550123">(555) 555-0123</a>
+      <a href="mailto:hello@jordanmcghee.com">hello@jordanmcghee.com</a>
+      <p>Serving the local area, by appointment.</p>
+    </div>
+  </footer>
+</div>
+
+<script>
+  const header = document.querySelector(".header");
+  const toggle = document.querySelector(".menu-toggle");
+  const nav = document.querySelector("#site-nav");
+
+  function setMenu(open: boolean) {
+    nav?.classList.toggle("is-open", open);
+    toggle?.setAttribute("aria-expanded", String(open));
+    toggle?.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    document.body.classList.toggle("menu-open", open);
+  }
+
+  toggle?.addEventListener("click", () => {
+    setMenu(!nav?.classList.contains("is-open"));
+  });
+
+  nav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMenu(false));
+  });
+
+  header
+    ?.querySelector(".logo")
+    ?.addEventListener("click", () => setMenu(false));
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setMenu(false);
+  });
+
+  const carousel = document.querySelector("[data-carousel]");
+  const track = carousel?.querySelector(".carousel-track");
+  const prev = carousel?.querySelector(".carousel-btn.prev");
+  const next = carousel?.querySelector(".carousel-btn.next");
+
+  function scrollCarousel(direction: number) {
+    if (!(track instanceof HTMLElement)) return;
+    const slide = track.querySelector(".carousel-slide");
+    const amount = slide instanceof HTMLElement ? slide.offsetWidth + 16 : 280;
+    track.scrollBy({ left: amount * direction, behavior: "smooth" });
+  }
+
+  prev?.addEventListener("click", () => scrollCarousel(-1));
+  next?.addEventListener("click", () => scrollCarousel(1));
+
+  const form = document.querySelector("[data-contact-form]");
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const status = form.querySelector(".form-status");
+    if (form instanceof HTMLFormElement) form.reset();
+    if (status instanceof HTMLElement) status.hidden = false;
+  });
+</script>
+
+<style>
+  :root {
+    --color-primary: #e40809;
+  }
+
+  h1 {
+    color: var(--color-primary);
+    font-style: italic;
+    font-weight: 800;
+  }
+
+  :global(html) {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+  }
+
+  :global(body) {
+    margin: 0;
+    background: #f7f6f3;
+    color: #1c1c1a;
+    font-family:
+      "Segoe UI",
+      system-ui,
+      -apple-system,
+      sans-serif;
+    line-height: 1.5;
+  }
+
+  :global(body.menu-open) {
+    overflow: hidden;
+  }
+
+  .page {
+    min-height: 100%;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: rgba(247, 246, 243, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #e6e4de;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    z-index: 21;
+  }
+
+  .logo-mark {
+    width: 1.4rem;
+    height: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .menu-toggle {
+    display: none;
+    position: relative;
+    z-index: 21;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .menu-toggle-bar {
+    display: block;
+    width: 1.15rem;
+    height: 1.5px;
+    margin: 5px auto;
+    background: currentColor;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .nav a {
+    color: #4a4a46;
+    text-decoration: none;
+    font-size: 1.25rem;
+  }
+
+  .nav a:hover {
+    color: #1c1c1a;
+  }
+
+  .hero,
+  .section,
+  .footer {
+    width: min(1080px, calc(100% - 2.5rem));
+    margin-inline: auto;
+  }
+
+  .hero {
+    padding: 5.5rem 0 4.5rem;
+    max-width: 40rem;
+    margin-left: max(1.25rem, calc((100% - 1080px) / 2));
+  }
+
+  .eyebrow {
+    margin: 0 0 0.75rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6d6c66;
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+
+  h1 {
+    font-size: clamp(2.15rem, 5vw, 3.4rem);
+  }
+
+  h2 {
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+  }
+
+  .subtitle,
+  .footer p {
+    margin: 0;
+    color: #5c5b56;
+  }
+
+  .subtitle {
+    margin: 1rem 0 1.75rem;
+    font-size: 1.1rem;
+    max-width: 34rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.2rem;
+    border: 0;
+    border-radius: 2px;
+    background: #1c1c1a;
+    color: #f7f6f3;
+    font: inherit;
+    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background: #33332f;
+  }
+
+  .section {
+    padding: 4rem 0;
+    border-top: 1px solid #e6e4de;
+  }
+
+  .section-head {
+    margin-bottom: 2rem;
+  }
+
+  .services {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid #e6e4de;
+  }
+
+  .service {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.95rem 1rem 0.95rem 0;
+    border-bottom: 1px solid #e6e4de;
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .service-check {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    color: #1c1c1a;
+  }
+
+  .service:nth-child(even) {
+    padding-left: 1rem;
+    padding-right: 0;
+  }
+
+  .carousel {
+    position: relative;
+  }
+
+  .carousel-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(min(78vw, 340px), 1fr);
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-slide {
+    margin: 0;
+    scroll-snap-align: start;
+  }
+
+  .carousel-slide img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 2px;
+    background: #e6e4de;
+  }
+
+  .carousel-slide figcaption {
+    margin-top: 0.65rem;
+    font-size: 0.9rem;
+    color: #5c5b56;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: calc(50% - 2rem);
+    display: grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    padding: 0;
+    border: 1px solid #d8d6d0;
+    border-radius: 999px;
+    background: #f7f6f3;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .carousel-btn svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .carousel-btn.prev {
+    left: -0.6rem;
+  }
+
+  .carousel-btn.next {
+    right: -0.6rem;
+  }
+
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.25rem;
+    max-width: 40rem;
+  }
+
+  .form label {
+    display: grid;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    color: #4a4a46;
+  }
+
+  .form .full,
+  .form .btn,
+  .form-status {
+    grid-column: 1 / -1;
+  }
+
+  .form .btn {
+    justify-self: start;
+    margin-top: 0.25rem;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid #d8d6d0;
+    border-radius: 2px;
+    background: #fff;
+    color: inherit;
+    font: inherit;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: 2px solid #1c1c1a;
+    outline-offset: 1px;
+  }
+
+  .form-status {
+    margin: 0;
+    color: #3d5a45;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2.5rem 0 3rem;
+    border-top: 1px solid #e6e4de;
+    font-size: 0.95rem;
+  }
+
+  .footer-name {
+    margin: 0 0 0.2rem;
+    font-weight: 600;
+    color: #1c1c1a;
+  }
+
+  .footer-contact {
+    display: grid;
+    gap: 0.3rem;
+    text-align: right;
+  }
+
+  .footer-contact a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .footer-contact a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 720px) {
+    .header {
+      padding: 0.7rem 1rem;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+
+    .nav {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 5rem 1.5rem 2rem;
+      background: #f7f6f3;
+      transform: translateX(100%);
+      transition: transform 0.25s ease;
+    }
+
+    .nav.is-open {
+      transform: translateX(0);
+    }
+
+    .nav a {
+      font-size: 1.5rem;
+      color: #1c1c1a;
+    }
+
+    .hero,
+    .section,
+    .footer {
+      width: min(1080px, calc(100% - 2rem));
+    }
+
+    .hero {
+      padding: 3.5rem 0 3rem;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: none;
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .services {
+      grid-template-columns: 1fr;
+    }
+
+    .service,
+    .service:nth-child(even) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .form {
+      grid-template-columns: 1fr;
+    }
+
+    .carousel-btn {
+      display: none;
+    }
+
+    .footer,
+    .footer-contact {
+      flex-direction: column;
+      text-align: left;
+    }
+  }
+</style>
