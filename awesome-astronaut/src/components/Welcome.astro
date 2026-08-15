@@ -313,7 +313,8 @@ const projects = [
     text-decoration: none;
     font-weight: 600;
     letter-spacing: -0.02em;
-    z-index: 21;
+    position: relative;
+    z-index: 1;
   }
 
   .logo-mark {
@@ -325,7 +326,7 @@ const projects = [
   .menu-toggle {
     display: none;
     position: relative;
-    z-index: 21;
+    z-index: 30;
     width: 2.5rem;
     height: 2.5rem;
     padding: 0;
@@ -336,8 +337,8 @@ const projects = [
 
   .menu-toggle-bar {
     display: block;
-    width: 1.15rem;
-    height: 1.5px;
+    width: 2rem;
+    height: 0.5rem;
     margin: 5px auto;
     background: currentColor;
     transition:
@@ -346,7 +347,7 @@ const projects = [
   }
 
   .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(1) {
-    transform: translateY(6.5px) rotate(45deg);
+    transform: translateY(12px) rotate(45deg);
   }
 
   .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(2) {
@@ -354,7 +355,7 @@ const projects = [
   }
 
   .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(3) {
-    transform: translateY(-6.5px) rotate(-45deg);
+    transform: translateY(-12px) rotate(-45deg);
   }
 
   .nav {
@@ -643,19 +644,21 @@ const projects = [
     .nav {
       position: fixed;
       inset: 0;
+      z-index: 25;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: flex-start;
       gap: 1.5rem;
       padding: 5rem 1.5rem 2rem;
-      background: #f7f6f3;
+      background-color: #f7f6f3;
       transform: translateX(100%);
       transition: transform 0.25s ease;
     }
 
     .nav.is-open {
       transform: translateX(0);
+      height: fit-content;
     }
 
     .nav a {
