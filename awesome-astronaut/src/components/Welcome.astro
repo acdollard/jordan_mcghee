@@ -368,6 +368,19 @@ const contactItems = [
   });
 
   let headerScrolled = false;
+  let hasLeftTop = false;
+  const shimmer = document.querySelector(".hero .shimmer");
+
+  function playShimmer() {
+    if (!(shimmer instanceof HTMLElement)) return;
+    shimmer.classList.remove("is-shimmering");
+    void shimmer.offsetWidth;
+    shimmer.classList.add("is-shimmering");
+  }
+
+  shimmer?.addEventListener("animationend", () => {
+    shimmer.classList.remove("is-shimmering");
+  });
 
   function updateHeaderScroll() {
     const y = window.scrollY;
@@ -380,9 +393,17 @@ const contactItems = [
       headerScrolled = false;
       header?.classList.remove("is-scrolled");
     }
+
+    if (y > 80) {
+      hasLeftTop = true;
+    } else if (y < 12 && hasLeftTop) {
+      hasLeftTop = false;
+      playShimmer();
+    }
   }
 
   updateHeaderScroll();
+  if (window.scrollY < 12) playShimmer();
   window.addEventListener("scroll", updateHeaderScroll, { passive: true });
 
   const carousel = document.querySelector("[data-carousel]");
@@ -635,11 +656,15 @@ const contactItems = [
     );
     background-size: 250% 100%;
     background-repeat: no-repeat;
+    background-position: 150% 0;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
     pointer-events: none;
+  }
+
+  .hero .shimmer.is-shimmering {
     animation: hero-shimmer 2.8s ease-in-out;
   }
 
@@ -1117,6 +1142,19 @@ const contactItems = [
       margin-left: auto;
       margin-right: auto;
       max-width: none;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero .column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
       text-align: center;
     }
 
