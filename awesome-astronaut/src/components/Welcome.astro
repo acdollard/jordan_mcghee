@@ -3,6 +3,10 @@ import img4127 from "../assets/images/IMG_4127.jpg";
 import img4218 from "../assets/images/IMG_4218.jpg";
 import img6883 from "../assets/images/IMG_6883.jpeg";
 import img7063 from "../assets/images/IMG_7063.jpeg";
+import img8085 from "../assets/images/IMG_8085.png";
+import img3549 from "../assets/images/IMG_3549.png";
+import img3548 from "../assets/images/IMG_3548.png";
+import img7711 from "../assets/images/IMG_7711.png";
 import logo from "../assets/logo-bg-removed.png";
 import jordan from "../assets/jordan.jpg";
 import marbleWhite from "../assets/stone-white-2.jpg";
@@ -26,10 +30,14 @@ const services = [
 ];
 
 const projects = [
-  { src: img4127.src, alt: "Completed project work", caption: "Previous work" },
-  { src: img4218.src, alt: "Completed project work", caption: "Previous work" },
-  { src: img6883.src, alt: "Completed project work", caption: "Previous work" },
-  { src: img7063.src, alt: "Completed project work", caption: "Previous work" },
+	{ src: img4127.src, alt: "Completed project work" },
+	{ src: img4218.src, alt: "Completed project work" },
+	{ src: img6883.src, alt: "Completed project work" },
+	{ src: img7063.src, alt: "Completed project work" },
+	{ src: img8085.src, alt: "TV mounted above fireplace" },
+	{ src: img3549.src, alt: "Technician installing wall fixture" },
+	{ src: img3548.src, alt: "Large TV installation", objectPosition: "50% 20%" },
+	{ src: img7711.src, alt: "Office storage and shelving installation" },
 ];
 
 const contactItems = [
@@ -231,8 +239,14 @@ const contactItems = [
           {
             projects.map((project) => (
               <figure class="carousel-slide">
-                <img src={project.src} alt={project.alt} loading="lazy" />
-                <figcaption>{project.caption}</figcaption>
+                <img
+                  src={project.src}
+                  alt={project.alt}
+                  loading="lazy"
+                  style={project.objectPosition
+                    ? `object-position: ${project.objectPosition}`
+                    : undefined}
+                />
               </figure>
             ))
           }
@@ -795,14 +809,6 @@ const contactItems = [
     object-fit: cover;
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: #222;
-  }
-
-  .carousel-slide figcaption {
-    margin-top: 0.65rem;
-    font-size: 0.9rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #bdbdbd;
   }
 
   .carousel-btn {
